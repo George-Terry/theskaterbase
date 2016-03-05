@@ -55,25 +55,7 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header ">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Home</span>
-          <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
-            </div>
-          </div>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-            <i class="material-icons">more_vert</i>
-          </button>
-          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <li class="mdl-menu__item">About</li>
-            <li class="mdl-menu__item">Contact</li>
-            <li class="mdl-menu__item">Legal information</li>
-          </ul>
+          <span class="mdl-layout-title">Search</span>
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer">
@@ -100,9 +82,14 @@
                 </form>
               </div>
             </div>
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="results mdl-shadow--2dp mdl-card__actions mdl-card--border">
+              	<h3>AJAX Search Results</h3>
+              </div>
+            </div>
             <!-- Video
             <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="watch mdl-card--expand">
+              <div class="video mdl-card--expand">
               <iframe width="1280" height="720" src="https://www.youtube.com/embed/dlo0GkrLSYE?rel=0" frameborder="0" allowfullscreen></iframe>
               </div>
               <div class="add_or_remove mdl-card__actions mdl-card--border">
