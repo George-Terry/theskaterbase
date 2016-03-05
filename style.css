@@ -1,0 +1,52 @@
+.demo-layout .demo-navigation .mdl-navigation__link {
+    color: #37474F;
+}
+.demo-navigation .mdl-navigation__link .material-icons {
+    color: #00BCD4;
+}
+.demo-layout .demo-navigation .mdl-navigation__link:hover {
+    background-color: #FFE082;
+}
+.demo-drawer-header {
+  background-color: #B2EBF2;
+}
+.mdl-layout__header-row {
+  background-color: #FF8F00;
+}
+.mdl-layout__content {
+  background-color: #FFC107;
+}
+.mdl-layout__header .mdl-layout__drawer-button {
+   background-color: #FF8F00; 
+}
+
+/*Video color: #37474F;*/
+.mdl-button {
+  color: #37474F;
+}
+.mdl-button:hover {
+  background-color: transparent;
+}
+.mdl-button:hover i{
+  color: #00BCD4;
+}
+
+.search {
+  background-color: white;
+  height: 60px;
+  border-radius: 3px;
+  padding-right: 40px;
+}
+.search i {
+  font-size: 40px;
+  position: fixed;
+}
+
+.search input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  padding: 0;
+  padding-left: 40px;
+  font-size: 30px;
+}
