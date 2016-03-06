@@ -1,3 +1,39 @@
+<?php
+  $servername = "localhost";
+  $username = "The_gt";
+  $password = "%H2puG9Jg-t9&d";
+  $dbname = "skaterbase";
+
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  
+  // Check connection
+  if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+
+  $output = "";
+
+  if (isset($_POST['search'])) {
+    $searchq = $_POST['search'];
+
+    $sql = "SELECT * FROM `trick_list` WHERE `trick` LIKE '%$searchq%' LIMIT 0, 30";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while($row = mysqli_fetch_assoc($result)) {
+
+            $output .= '<div>'. $row["trick"].'</div>';
+        }
+    }
+    else {
+        $output = 'No tricks found...';
+    }
+  }
+  mysqli_close($conn);
+
+ ?>
 <!doctype html>
 <!--
   Material Design Lite
@@ -55,8 +91,7 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header ">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Home</span>
-          <div class="mdl-layout-spacer"></div>
+          <span class="mdl-layout-title">Search</span>
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer">
@@ -65,53 +100,46 @@
           <p>George Terry</p>
         </header>
         <nav class="demo-navigation mdl-navigation">
-          <a href="index.html" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">home</i>Home</a>
-          <a href="search.html" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">search</i>Search</a>
+          <a href="index.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">home</i>Home</a>
+          <a href="search.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">search</i>Search</a>
           <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add</i>Trick goals</a>
           <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add_check</i>Tricks landed</a>
           <div class="mdl-layout-spacer"></div>
         </nav>
       </div>
-      <main class=" video mdl-layout__content">
+      <main class="mdl-layout__content">
         <div class="mdl-grid demo-content">
-          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="watch mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Watch</h2>
-              </div>
-              <div class="mdl-card__supporting-text">
-                Search a large database of professional trick tutorials.
-              </div>
+          <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+            <div class="search mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Search</a>
+                <form action="search.php" method="post">
+                  <i class="material-icons">search</i>
+                  <input type="text" name="search" placeholder="Search for tricks..."></input>
+                </form>
               </div>
             </div>
-          </div>
-          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Learn</h2>
-              </div>
-              <div class="mdl-card__supporting-text">
-                Set some short, or long term, goals of the tricks you want to land.
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trick goals</a>
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="results mdl-shadow--2dp mdl-card__actions mdl-card--border">
+                <?php print("$output"); ?>
               </div>
             </div>
-          </div>
-          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+            <!-- Video
             <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Land</h2>
+              <div class="video mdl-card--expand">
+              <iframe width="1280" height="720" src="https://www.youtube.com/embed/dlo0GkrLSYE?rel=0" frameborder="0" allowfullscreen></iframe>
               </div>
-              <div class="mdl-card__supporting-text">
-                Tick off the ones you've landed and earn awards pased on your progress.
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Landed tricks</a>
+              <div class="add_or_remove mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons">playlist_add</i>
+                  Trick goal
+                </a>
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons">playlist_add_check</i>
+                  Trick landed
+                </a>
               </div>
             </div>
+            -->
           </div>
         </div>
       </main>
@@ -154,11 +182,11 @@
             </g>
             <g id="Layer_5">
               <polygon opacity="0.36" stroke-miterlimit="10" points="0,223.3 48,138.5 154.7,169 211,88.5
-              294.5,80.5 380,165.2 437,75.5 469.5,223.3 	"/>
+              294.5,80.5 380,165.2 437,75.5 469.5,223.3   "/>
             </g>
             <g id="Layer_4">
               <polygon stroke-miterlimit="10" points="469.3,222.7 1,222.7 48.7,166.7 155.7,188.3 212,132.7
-              296.7,128 380.7,184.3 436.7,125 	"/>
+              296.7,128 380.7,184.3 436.7,125   "/>
             </g>
           </g>
         </defs>
