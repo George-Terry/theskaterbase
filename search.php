@@ -1,46 +1,3 @@
-<?php
-  $servername = "localhost";
-  $username = "The_gt";
-  $password = "%H2puG9Jg-t9&d";
-  $dbname = "skaterbase";
-
-  // Create connection
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
-  
-  // Check connection
-  if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-  }
-
-  $output = "";
-
-  if (isset($_POST['search'])) {
-    $searchq = $_POST['search'];
-
-    $sql = "SELECT * FROM `trick_list` WHERE `trick` LIKE '%$searchq%' LIMIT 0, 6";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-        while($row = mysqli_fetch_assoc($result)) {
-
-            $output .=
-            '<div class="result mdl-shadow--2dp mdl-card__actions mdl-card--border">
-              <i class="material-icons">playlist_add</i>
-              <i class="material-icons">playlist_add_check</i>
-              <p>'
-                . $row["trick"].
-              '</p>
-            </div>';
-        }
-    }
-    else {
-        $output = 'No tricks found...';
-    }
-  }
-  mysqli_close($conn);
-
- ?>
 <!doctype html>
 <!--
   Material Design Lite
@@ -60,6 +17,14 @@
 -->
 <html lang="en">
   <head>
+
+    <!--[if lt IE 9]>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9) | (!IE)]><!-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!--<![endif]-->
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
@@ -93,6 +58,15 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.amber-cyan.min.css" />
     <link rel="stylesheet" href="mdl.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+      function searchq() {
+        var search_text = $("input[name='search']").val();
+
+        $.post("live-search.php", {sarchVal: search_text}, function(output){
+          $("#output").html(output);
+        });
+      }
+    </script>
   </head>
   <body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -121,12 +95,11 @@
               <div class="mdl-card__actions mdl-card--border">
                 <form action="search.php" method="post">
                   <i class="material-icons">search</i>
-                  <input type="text" name="search" placeholder="Search for tricks..." autocomplete="off"></input>
+                  <input type="text" name="search" placeholder="Search for tricks..." autocomplete="off" onkeydown="searchq();"></input>
                 </form>
               </div>
             </div>
-            <div class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-                <?php print("$output"); ?>
+            <div id="output" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
             </div>
             <!-- Video
             <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
