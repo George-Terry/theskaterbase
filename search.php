@@ -17,14 +17,21 @@
   if (isset($_POST['search'])) {
     $searchq = $_POST['search'];
 
-    $sql = "SELECT * FROM `trick_list` WHERE `trick` LIKE '%$searchq%' LIMIT 0, 30";
+    $sql = "SELECT * FROM `trick_list` WHERE `trick` LIKE '%$searchq%' LIMIT 0, 6";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
         // output data of each row
         while($row = mysqli_fetch_assoc($result)) {
 
-            $output .= '<div>'. $row["trick"].'</div>';
+            $output .=
+            '<div class="result mdl-shadow--2dp mdl-card__actions mdl-card--border">
+              <i class="material-icons">playlist_add</i>
+              <i class="material-icons">playlist_add_check</i>
+              <p>'
+                . $row["trick"].
+              '</p>
+            </div>';
         }
     }
     else {
@@ -57,7 +64,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Material Design Lite</title>
+    <title>The Skaterbase</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -114,14 +121,12 @@
               <div class="mdl-card__actions mdl-card--border">
                 <form action="search.php" method="post">
                   <i class="material-icons">search</i>
-                  <input type="text" name="search" placeholder="Search for tricks..."></input>
+                  <input type="text" name="search" placeholder="Search for tricks..." autocomplete="off"></input>
                 </form>
               </div>
             </div>
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="results mdl-shadow--2dp mdl-card__actions mdl-card--border">
+            <div class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
                 <?php print("$output"); ?>
-              </div>
             </div>
             <!-- Video
             <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">

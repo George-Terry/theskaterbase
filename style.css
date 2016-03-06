@@ -40,6 +40,7 @@
 .search i {
   font-size: 40px;
   position: fixed;
+  color: #37474F;
 }
 
 .search input {
@@ -51,9 +52,22 @@
   font-size: 30px;
 }
 
-.results {
-  background-color: white;
-  border-radius: 3px;
-  height: 500px;
+.result:first-of-type {
   margin-top: 15px;
+}
+.result {
+  background-color: white;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+.result i {
+  color: #37474F;
+  margin-left: 10px;
+  font-size: 40px;
+}
+.result p {
+  display: inline-block;
+  margin: 0;
+  font-size: 20px;
 }
