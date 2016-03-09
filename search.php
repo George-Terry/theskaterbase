@@ -66,6 +66,8 @@
           $("#output").html(output);
         });
       }
+
+
     </script>
   </head>
   <body>
@@ -101,9 +103,9 @@
             </div>
             <div id="output" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
             </div>
-            <!-- Video
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="video mdl-card--expand">
+            <!-- Video -->
+            <div class="video demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card--expand">
               <iframe width="1280" height="720" src="https://www.youtube.com/embed/dlo0GkrLSYE?rel=0" frameborder="0" allowfullscreen></iframe>
               </div>
               <div class="add_or_remove mdl-card__actions mdl-card--border">
@@ -117,7 +119,7 @@
                 </a>
               </div>
             </div>
-            -->
+            
           </div>
         </div>
       </main>
@@ -171,5 +173,12 @@
       </svg>
 
     <script src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+    <script type="text/javascript">
+    $('.video').hide();
+      $('.result-container').on('click', '.result', function() {
+        $('.result-container').hide();
+        $('.video').show();
+      });
+    </script>
   </body>
 </html>
