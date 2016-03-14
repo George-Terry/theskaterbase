@@ -71,3 +71,8 @@
   margin: 0;
   font-size: 20px;
 }
+.video-container {
+  margin-top: 15px;
+  background-color: white;
+  border-radius: 3px;
+}

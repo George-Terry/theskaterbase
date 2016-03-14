@@ -8,7 +8,7 @@
   You may obtain a copy of the License at
 
       https://www.apache.org/licenses/LICENSE-2.0
-
+s
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -104,10 +104,8 @@
             <div id="output" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
             </div>
             <!-- Video -->
-            <div class="video demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card--expand">
-              <iframe width="1280" height="720" src="https://www.youtube.com/embed/dlo0GkrLSYE?rel=0" frameborder="0" allowfullscreen></iframe>
-              </div>
+            <div class="video-container mdl-shadow--2dp mdl-card--expand">
+              <div id="video"></div>
               <div class="add_or_remove mdl-card__actions mdl-card--border">
                 <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">
                   <i class="material-icons">playlist_add</i>
@@ -119,7 +117,6 @@
                 </a>
               </div>
             </div>
-            
           </div>
         </div>
       </main>
@@ -173,11 +170,14 @@
       </svg>
 
     <script src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+    <script src="yt_videos.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+    
     <script type="text/javascript">
-    $('.video').hide();
+    $('.video-container').hide();
       $('.result-container').on('click', '.result', function() {
         $('.result-container').hide();
-        $('.video').show();
+        $('.video-container').show();
       });
     </script>
   </body>
