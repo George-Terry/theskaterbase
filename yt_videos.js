@@ -5,7 +5,7 @@ function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{
 $(function() {
     $('.result-container').on('click', '.result', function(e) {
         console.log("yt function run");
-        console.log($("p", this).text());
+        window.current_vid = $("p", this).text();
 
        e.preventDefault();
        // prepare the request
@@ -15,7 +15,7 @@ $(function() {
             channelId: "UCX9_Ks1MXuwXCmtt0fOFsxA",
             q: "how-to '" + encodeURIComponent($("p", this).text()).replace(/%20/g, "'"),
             maxResults: 1
-       }); console.log(request);
+       });
        // execute the request
        request.execute(function(response) {
           var results = response.result;

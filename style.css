@@ -19,6 +19,10 @@
 .mdl-layout__header .mdl-layout__drawer-button {
    background-color: #FF8F00; 
 }
+.mdl-card__actions {
+  background-color: white;
+  border-radius: 3px;
+}
 
 /*Video color: #37474F;*/
 .mdl-button {
@@ -28,6 +32,9 @@
   background-color: transparent;
 }
 .mdl-button:hover i{
+  color: #00BCD4;
+}
+.btn-landed-true i{
   color: #00BCD4;
 }
 
@@ -75,4 +82,8 @@
   margin-top: 15px;
   background-color: white;
   border-radius: 3px;
+}
+.profile_pic {
+  height: 90px;
+  border-radius: 90px;
 }

@@ -152,6 +152,19 @@ s
                 //Generate the HTML that displays the users profile and options
                 $('#profile').html('<img class="profile_pic" src="//graph.facebook.com/' + response.id + '/picture?width=160&height=160"><div class="profile_info"><span>' + response.name + '<span></div>');
                 fb_id = response.id;
+                console.log(window.fb_id);
+                //Show landed tricks
+                $.ajax({
+                  url: "show_landed.php",
+                  type: "POST",
+                  data: {
+                    user: window.fb_id
+                  },
+                  dataType: "html",
+                  success: function(data) {
+                    $('#landed-list').html(data);
+                  },
+                });
             });
         }
     </script>
@@ -179,22 +192,13 @@ s
         </nav>
       </div>
       <main class="mdl-layout__content">
-        <div class="mdl-grid demo-content">
+        <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
-            <div class="search mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+            <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
-                <form action="search.php" method="post">
-                  <i class="material-icons">search</i>
-                  <input type="text" name="search" placeholder="Search for tricks..." autocomplete="off" onkeydown="searchq();"></input>
-                </form>
+                <h1>Landed tricks</h1>
+                <div id="landed-list"></div>
               </div>
-            </div>
-            <div id="output" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-            </div>
-            <!-- Video -->
-            <div class="video-container mdl-shadow--2dp mdl-card--expand">
-              <div id="video"></div>
-              <div id="notification"></div>
             </div>
           </div>
         </div>
@@ -206,33 +210,10 @@ s
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
     
     <script type="text/javascript">
-      $('.video-container').hide();
-      $('.result-container').on('click', '.result', function() {
-        $('.result-container').hide();
-        $('.video-container').show();
+      $( document ).ready(function() {
+
       });
-
-      $('.video-container').on('click', '.btn-landed-false', function() {
-
-        console.log("Landed!");
-        console.log(current_vid);
-        $(".btn-landed-false").attr('class', ".btn-landed-true");
-
-        $.ajax({
-            url: "lists.php",
-            type: "POST",
-            data: {
-                user: window.fb_id,
-                trick: current_vid
-            },
-            dataType: "html",
-            success: function(data) {
-                $('#notification').show().html(data);
-            },
-        });
     
-    });
-
 
     </script>
   </body>
