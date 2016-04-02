@@ -241,13 +241,12 @@ s
       //.btn-landed-true to .btn-landed-false
       $('.video-container').on('click', '.btn-landed-true', function() {
 
-        console.log("Removed!");
-        /*
-        console.log(current_vid);
-        $(".btn-landed-false").attr('class', ".btn-landed-true");
+        console.log("Removed " + current_vid + " for " + window.fb_id + "!");
+
+        $(".btn-landed-true").attr('class', ".btn-landed-false");
 
         $.ajax({
-            url: "lists.php",
+            url: "delete.php",
             type: "POST",
             data: {
                 user: window.fb_id,
@@ -258,7 +257,7 @@ s
                 $('#notification').show().html(data);
             },
         });
-    */
+    
       });
 
 
