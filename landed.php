@@ -186,8 +186,8 @@ s
         <nav class="demo-navigation mdl-navigation">
           <a href="index.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">home</i>Home</a>
           <a href="search.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">search</i>Search</a>
-          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add</i>Trick goals</a>
-          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add_check</i>Tricks landed</a>
+          <a href="goals.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add</i>Trick goals</a>
+          <a href="landed.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add_check</i>Tricks landed</a>
           <div class="mdl-layout-spacer"></div>
         </nav>
       </div>

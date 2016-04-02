@@ -25,7 +25,7 @@
         while($row = mysqli_fetch_assoc($result)) {
 
             $output .=
-            '<div class="result mdl-shadow--2dp mdl-card__actions mdl-card--border">
+            '<div class="trick-result result mdl-shadow--2dp mdl-card__actions mdl-card--border">
               <i class="material-icons">playlist_add</i>
               <i class="material-icons">playlist_add_check</i>
               <p>'

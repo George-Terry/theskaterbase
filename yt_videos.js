@@ -3,7 +3,7 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 
 $(function() {
-    $('.result-container').on('click', '.result', function(e) {
+    $('.result-container').on('click', '.trick-result', function(e) {
         console.log("yt function run");
         window.current_vid = $("p", this).text();
 
