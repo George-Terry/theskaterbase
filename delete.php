@@ -13,7 +13,7 @@
 	}
 
 	//Insert values for submitted trick and user
-	$sql = "DELETE FROM test  WHERE (trick, user) = ('$_POST[trick]', '$_POST[user]')";
+	$sql = "DELETE FROM landed  WHERE (trick, user) = ('$_POST[trick]', '$_POST[user]')";
 
 	//Show if the insert was successful
 	if (mysqli_query($conn, $sql)) {

@@ -12,7 +12,7 @@
 	    die("Connection failed: " . mysqli_connect_error());
 	}
 
-	$sql = "SELECT * FROM test WHERE (trick, user) = ('$_POST[trick]', '$_POST[user]')";
+	$sql = "SELECT * FROM landed WHERE (trick, user) = ('$_POST[trick]', '$_POST[user]')";
 	
 	$result = mysqli_query($conn, $sql);
 

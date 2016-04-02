@@ -59,7 +59,13 @@ s
     <link rel="stylesheet" href="mdl.css">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript">
+      function searchq() {
+        var search_text = $("input[name='search']").val();
 
+        $.post("live-search.php", {sarchVal: search_text}, function(output){
+          $("#output").html(output);
+        });
+      }
 
 
     </script>
@@ -146,6 +152,19 @@ s
                 //Generate the HTML that displays the users profile and options
                 $('#profile').html('<img class="profile_pic" src="//graph.facebook.com/' + response.id + '/picture?width=160&height=160"><div class="profile_info"><span>' + response.name + '<span></div>');
                 fb_id = response.id;
+                console.log(window.fb_id);
+                //Show landed tricks
+                $.ajax({
+                  url: "show_landed.php",
+                  type: "POST",
+                  data: {
+                    user: window.fb_id
+                  },
+                  dataType: "html",
+                  success: function(data) {
+                    $('#landed-list').html(data);
+                  },
+                });
             });
         }
     </script>
@@ -169,29 +188,17 @@ s
           <a href="search.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">search</i>Search</a>
           <a href="goals.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add</i>Trick goals</a>
           <a href="landed.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add_check</i>Tricks landed</a>
-          <a href="stats.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">timeline</i>Stats</a>
           <div class="mdl-layout-spacer"></div>
         </nav>
       </div>
       <main class="mdl-layout__content">
-        <div class="mdl-grid demo-content">
+        <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
-            <div class="search mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+            <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
-                <form action="search.php" method="post">
-                  <i class="material-icons">search</i>
-                  <input id="search" type="text" name="search" placeholder="Search for tricks..." autocomplete="off" onkeydown="searchq();"></input>
-                </form>
+                <h1>Landed tricks</h1>
+                <div id="landed-list"></div>
               </div>
-            </div>
-            <div id="output" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-            </div>
-            <div id="prev-result" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-            </div>
-            <!-- Video -->
-            <div class="video-container mdl-shadow--2dp mdl-card--expand">
-              <div id="video"></div>
-              <div id="notification"></div>
             </div>
           </div>
         </div>
@@ -203,82 +210,9 @@ s
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
     
     <script type="text/javascript">
+      $( document ).ready(function() {
 
-      function searchq() {
-        var search_text = $("input[name='search']").val();
-
-        $.post("live-search.php", {sarchVal: search_text}, function(output){
-          $("#output").html(output);
-        });
-      }
-
-      $('.video-container').hide();
-      //Shows the video container and hides the result container after a trick has been clicked on
-      $('.result-container').on('click', '.trick-result', function() {
-        $('.result-container').hide();
-        $('.video-container').show();
       });
-
-      $('#search').focus(function(){
-        $( "#prev-result" ).html( '<div class="prev-result result mdl-shadow--2dp mdl-card__actions mdl-card--border"><i class="material-icons">backspace</i><p>Go back to '
-          + current_vid+
-              '...</p></div>' );
-        $('.result-container').show();
-        $('.video-container').hide();
-      });
-      $('.result-container').on('click', '.prev-result', function() {
-        $('.result-container').hide();
-        $('.video-container').show();
-      });
-
-
-      //Add the current trick to the "landed" table and change the button from:
-      //.btn-landed-false to .btn-landed-true
-      $('.video-container').on('click', '.btn-landed-false', function() {
-
-        console.log("Landed!");
-        console.log(current_vid);
-        $(".btn-landed-false").addClass( ".btn-landed-true" ).removeClass(".btn-landed-false");
-
-        $.ajax({
-            url: "lists.php",
-            type: "POST",
-            data: {
-                user: window.fb_id,
-                trick: current_vid
-            },
-            dataType: "html",
-            success: function(data) {
-                $('#notification').show().html(data);
-            },
-        });
-    
-      });
-
-      //Remove the current trick from the "landed" table and change the button from:
-      //.btn-landed-true to .btn-landed-false
-      $('.video-container').on('click', '.btn-landed-true', function() {
-
-        console.log("Removed " + current_vid + " for " + window.fb_id + "!");
-
-        $(".btn-landed-true").attr('class', ".btn-landed-false");
-
-        $.ajax({
-            url: "delete.php",
-            type: "POST",
-            data: {
-                user: window.fb_id,
-                trick: current_vid
-            },
-            dataType: "html",
-            success: function(data) {
-                $('#notification').show().html(data);
-            },
-        });
-    
-      });
-
-
     </script>
   </body>
 </html>

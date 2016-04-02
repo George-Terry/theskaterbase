@@ -13,7 +13,7 @@
 	}
 
 	//Insert values for submitted trick and user
-	$sql = "INSERT INTO test (trick, user) VALUES ('$_POST[trick]', '$_POST[user]')";
+	$sql = "INSERT INTO landed (trick, user) VALUES ('$_POST[trick]', '$_POST[user]')";
 
 	//Show if the insert was successful
 	if (mysqli_query($conn, $sql)) {
