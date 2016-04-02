@@ -1,7 +1,7 @@
 <?php
 	$servername = "localhost";
 	$username = "The_gt";
-	$password = "9mWTd$)p5[{P";
+	$password = "%H2puG9Jg-t9&d";
 	$dbname = "skaterbase";
 
 	// Create connection

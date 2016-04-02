@@ -206,12 +206,16 @@ s
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
     
     <script type="text/javascript">
+
       $('.video-container').hide();
+      //Shows the video container and hides the result container after a trick has been clicked on
       $('.result-container').on('click', '.result', function() {
         $('.result-container').hide();
         $('.video-container').show();
       });
 
+      //Add the current trick to the "landed" table and change the button from:
+      //.btn-landed-false to .btn-landed-true
       $('.video-container').on('click', '.btn-landed-false', function() {
 
         console.log("Landed!");
@@ -231,7 +235,31 @@ s
             },
         });
     
-    });
+      });
+
+      //Remove the current trick from the "landed" table and change the button from:
+      //.btn-landed-true to .btn-landed-false
+      $('.video-container').on('click', '.btn-landed-true', function() {
+
+        console.log("Removed!");
+        /*
+        console.log(current_vid);
+        $(".btn-landed-false").attr('class', ".btn-landed-true");
+
+        $.ajax({
+            url: "lists.php",
+            type: "POST",
+            data: {
+                user: window.fb_id,
+                trick: current_vid
+            },
+            dataType: "html",
+            success: function(data) {
+                $('#notification').show().html(data);
+            },
+        });
+    */
+      });
 
 
     </script>
