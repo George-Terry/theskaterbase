@@ -67,8 +67,9 @@ s
         });
       }
 
-
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="stats.js"></script>
   </head>
   <body>
     <script>
@@ -196,6 +197,7 @@ s
           <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
             <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
+                <canvas id="myChart" width="400" height="400"></canvas>
                 <h1>Landed tricks</h1>
                 <div id="landed-list"></div>
               </div>
@@ -208,11 +210,6 @@ s
     <script src="https://code.getmdl.io/1.1.1/material.min.js"></script>
     <script src="yt_videos.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
-    
-    <script type="text/javascript">
-      $( document ).ready(function() {
 
-      });
-    </script>
   </body>
 </html>
