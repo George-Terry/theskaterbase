@@ -12,15 +12,27 @@
 	    die("Connection failed: " . mysqli_connect_error());
 	}
 
-	$user_landed = "SELECT * FROM landed WHERE user = '$_POST[user]'";
-	$all_tricks = "SELECT * FROM tricks";
+	$all_tricks =
+		"SELECT * FROM tricks";
+	$user_landed =
+		"SELECT * FROM landed WHERE user = '$_POST[user]'";
+	$total_by_month =
+		"SELECT MONTHNAME(o_date), SUM(total) 
+		FROM landed
+		GROUP BY YEAR(o_date), MONTH(o_date)";
+	
 
 	//$sql = "SELECT * FROM test WHERE user = '1090031654343477'";
 
 	$user_landed = mysqli_query($conn, $user_landed);
 	$total_tricks = mysqli_query($conn, $all_tricks);
+	$total_by_month = mysqli_query($conn, $total_by_month);
+
+	//echo $total_by_month;
+	//echo $user_landed;
 
 	echo "<h2>" . mysqli_num_rows($user_landed) . "/" . mysqli_num_rows($total_tricks) . " tricks landed</h2>";
+	echo "By month " . mysqli_num_rows($total_by_month) . "...";
 
 	if (mysqli_num_rows($user_landed) > 0) {
 	    // output data of each row

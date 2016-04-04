@@ -197,7 +197,7 @@ s
           <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
             <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
-                <canvas id="myChart" width="400" height="400"></canvas>
+                <canvas id="myChart" width="800" height="400"></canvas>
                 <h1>Landed tricks</h1>
                 <div id="landed-list"></div>
               </div>
