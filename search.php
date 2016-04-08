@@ -167,8 +167,8 @@ s
         <nav class="demo-navigation mdl-navigation">
           <a href="index.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">home</i>Home</a>
           <a href="search.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">search</i>Search</a>
-          <a href="goals.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add</i>Trick goals</a>
-          <a href="landed.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add_check</i>Tricks landed</a>
+          <a href="goals.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add</i>Goals</a>
+          <a href="landed.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add_check</i>Landed</a>
           <a href="stats.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">timeline</i>Stats</a>
           <div class="mdl-layout-spacer"></div>
         </nav>
@@ -221,7 +221,7 @@ s
 
       $('#search').focus(function(){
         $( "#prev-result" ).html( '<div class="prev-result result mdl-shadow--2dp mdl-card__actions mdl-card--border"><i class="material-icons">backspace</i><p>Go back to '
-          + current_vid+
+          + selected_trick+
               '...</p></div>' );
         $('.result-container').show();
         $('.video-container').hide();
@@ -237,7 +237,7 @@ s
       $('.video-container').on('click', '.btn-landed-false', function() {
 
         console.log("Landed!");
-        console.log(current_vid);
+        console.log(selected_trick);
         $(".btn-landed-false").addClass( ".btn-landed-true" ).removeClass(".btn-landed-false");
 
         $.ajax({
@@ -245,7 +245,7 @@ s
             type: "POST",
             data: {
                 user: window.fb_id,
-                trick: current_vid
+                trick: selected_trick
             },
             dataType: "html",
             success: function(data) {
@@ -259,7 +259,7 @@ s
       //.btn-landed-true to .btn-landed-false
       $('.video-container').on('click', '.btn-landed-true', function() {
 
-        console.log("Removed " + current_vid + " for " + window.fb_id + "!");
+        console.log("Removed " + selected_trick + " for " + window.fb_id + "!");
 
         $(".btn-landed-true").attr('class', ".btn-landed-false");
 
@@ -268,7 +268,7 @@ s
             type: "POST",
             data: {
                 user: window.fb_id,
-                trick: current_vid
+                trick: selected_trick
             },
             dataType: "html",
             success: function(data) {

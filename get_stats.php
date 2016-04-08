@@ -12,28 +12,33 @@
 	    die("Connection failed: " . mysqli_connect_error());
 	}
 
+	$all_tricks =
+		"SELECT * FROM tricks";
 	$user_landed =
 		"SELECT * FROM landed WHERE user = '$_POST[user]'";
+	$total_by_month =
+		"SELECT MONTHNAME(o_date), SUM(total) 
+		FROM landed
+		GROUP BY YEAR(o_date), MONTH(o_date)";
+	
+
+	//$sql = "SELECT * FROM test WHERE user = '1090031654343477'";
 
 	$user_landed = mysqli_query($conn, $user_landed);
+	$total_tricks = mysqli_query($conn, $all_tricks);
+	$total_by_month = mysqli_query($conn, $total_by_month);
 
+	//echo $total_by_month;
+	//echo $user_landed;
 
-	echo "<h2>You have landed " . mysqli_num_rows($user_landed) . " tricks</h2>";
+	echo "<h2>" . mysqli_num_rows($user_landed) . "/" . mysqli_num_rows($total_tricks) . " tricks landed</h2>";
+	echo "By month " . mysqli_num_rows($total_by_month) . "...";
 
 	if (mysqli_num_rows($user_landed) > 0) {
 	    // output data of each row
-	    echo "<table id='landed-tricks'>
-							<th>Remove</th>
-							<th>Watch</th>
-							<th>Trick</th>";
 	    while($row = mysqli_fetch_assoc($user_landed)) {
-        echo "<tr id=landed-id-" . $row["id"] . ">
-						    <td class='remove-trick'><i class='material-icons'>highlight_off</i></td>
-						    <td class='watch-trick'><i class='material-icons'>play_circle_outline</i></td>
-						    <td class='trick-name'>" . $row["trick"] . "</td>
-						  </tr>";
+	        echo "<div class='landed_item'><p>" . $row["trick"] . "</p></div>";
 	    }
-	    echo "</table>";
 	} else {
 	    echo "You haven't ticked off any tricks yet...";
 	}

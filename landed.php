@@ -200,6 +200,11 @@ s
                 <div id="landed-list"></div>
               </div>
             </div>
+            <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__actions mdl-card--border">
+                <div id="video">Video here...</div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
@@ -210,9 +215,69 @@ s
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
     
     <script type="text/javascript">
-      $( document ).ready(function() {
+      $('#landed-list').on('click', '.remove-trick', function() {
 
+        console.log($(this).siblings('.trick-name').text());
+
+        $(this).parent().hide();
+
+        selected_trick = $(this).siblings('.trick-name').text();
+
+        $(".btn-landed-true").attr('class', ".btn-landed-false");
+
+        $.ajax({
+            url: "delete.php",
+            type: "POST",
+            data: {
+                user: window.fb_id,
+                trick: selected_trick
+            },
+            dataType: "html",
+            success: function(data) {
+                $('#notification').show().html(data);
+            },
+        });
+    
       });
+
+		//replace {{keys}} from an HTML template with formatted JSON data (https://github.com/FriesFlorian/tplawesome)
+		function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
+
+		$(function() {
+			$('#landed-list').on('click', '.watch-trick', function(e) {
+		        console.log("yt function run");
+		        selected_trick = $(this).siblings('.trick-name').text();
+		        console.log (selected_trick)
+		       e.preventDefault();
+		       // prepare the request
+		       var request = gapi.client.youtube.search.list({
+		            part: "snippet",
+		            type: "video",
+		            channelId: "UCX9_Ks1MXuwXCmtt0fOFsxA",
+		            q: "how-to '" + encodeURIComponent(selected_trick).replace(/%20/g, "'"),
+		            maxResults: 1
+		       });
+		       // execute the request
+		       request.execute(function(response) {
+		          var results = response.result;
+		          $("#video").html("");
+		          $.each(results.items, function(index, item) {
+		            $.get("video.html", function(data) {
+		                $("#video").append(tplawesome(data, [{"videoid":item.id.videoId}]));
+		            });
+		          });
+		       });
+		    });
+		});
+
+		function init() {
+		    gapi.client.setApiKey("AIzaSyCdbNzu-sah57tzrW3LcFmmHYw2kk1Jksw");
+		    gapi.client.load("youtube", "v3", function() {
+		      console.log("YT API initialised...")
+		        // yt api is ready
+		    });
+		}
+
     
 
     </script>
