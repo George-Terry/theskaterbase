@@ -58,17 +58,7 @@ s
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.amber-cyan.min.css" />
     <link rel="stylesheet" href="mdl.css">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript">
-      function searchq() {
-        var search_text = $("input[name='search']").val();
 
-        $.post("live-search.php", {sarchVal: search_text}, function(output){
-          $("#output").html(output);
-        });
-      }
-
-
-    </script>
   </head>
   <body>
     <script>
@@ -155,14 +145,14 @@ s
                 console.log(window.fb_id);
                 //Show landed tricks
                 $.ajax({
-                  url: "show_landed.php",
+                  url: "show_goals.php",
                   type: "POST",
                   data: {
                     user: window.fb_id
                   },
                   dataType: "html",
                   success: function(data) {
-                    $('#landed-list').html(data);
+                    $('#goal-list').html(data);
                   },
                 });
             });
@@ -196,8 +186,13 @@ s
           <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
             <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
-                <h1>Trick goals</h1>
-                <h2>Coming soon...</h2>
+                <h1>Goals</h1>
+                <div id="goal-list"></div>
+              </div>
+            </div>
+            <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__actions mdl-card--border">
+                <div id="video">Video here...</div>
               </div>
             </div>
           </div>
@@ -210,9 +205,92 @@ s
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
     
     <script type="text/javascript">
-      $( document ).ready(function() {
+      $('#goal-list').on('click', '.remove-trick', function() {
 
+        console.log($(this).siblings('.trick-name').text());
+
+        $(this).parent().hide();
+
+        selected_trick = $(this).siblings('.trick-name').text();
+
+        $(".btn-landed-true").attr('class', ".btn-landed-false");
+
+        $.ajax({
+            url: "remove_goal.php",
+            type: "POST",
+            data: {
+                user: window.fb_id,
+                trick: selected_trick
+            },
+            dataType: "html",
+            success: function(data) {
+                $('#notification').show().html(data);
+            },
+        });
+    
       });
+
+      $('#goal-list').on('click', '.landed-trick', function() {
+
+        $(this).parent().css({"text-decoration": "line-through"});
+
+        selected_trick = $(this).siblings('.trick-name').text();
+
+        $(".btn-landed-true").attr('class', ".btn-landed-false");
+
+        $.ajax({
+            url: "lists.php",
+            type: "POST",
+            data: {
+                user: window.fb_id,
+                trick: selected_trick
+            },
+            dataType: "html",
+            success: function(data) {
+                console.log(data);
+            },
+        });
+    
+      });
+
+		//replace {{keys}} from an HTML template with formatted JSON data (https://github.com/FriesFlorian/tplawesome)
+		function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
+
+		$(function() {
+			$('#goal-list').on('click', '.watch-trick', function(e) {
+		        console.log("yt function run");
+		        selected_trick = $(this).siblings('.trick-name').text();
+		        console.log (selected_trick)
+		       e.preventDefault();
+		       // prepare the request
+		       var request = gapi.client.youtube.search.list({
+		            part: "snippet",
+		            type: "video",
+		            channelId: "UCX9_Ks1MXuwXCmtt0fOFsxA",
+		            q: "how-to '" + encodeURIComponent(selected_trick).replace(/%20/g, "'"),
+		            maxResults: 1
+		       });
+		       // execute the request
+		       request.execute(function(response) {
+		          var results = response.result;
+		          $("#video").html("");
+		          $.each(results.items, function(index, item) {
+		            $.get("video.html", function(data) {
+		                $("#video").append(tplawesome(data, [{"videoid":item.id.videoId}]));
+		            });
+		          });
+		       });
+		    });
+		});
+
+		function init() {
+		    gapi.client.setApiKey("AIzaSyCdbNzu-sah57tzrW3LcFmmHYw2kk1Jksw");
+		    gapi.client.load("youtube", "v3", function() {
+		      console.log("YT API initialised...")
+		        // yt api is ready
+		    });
+		}
+
     
 
     </script>

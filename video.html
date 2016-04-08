@@ -10,7 +10,7 @@
 -->
 </div>
 <script type="text/javascript">
-console.log("Checking if landed: " + selected_trick + " for " + window.fb_id + "...");
+console.log("Checking if landed: " + current_vid + " for " + window.fb_id + "...");
 /*
 
 
@@ -22,20 +22,24 @@ The console logs work, but I haven't changed the actual html successfully yet...
 	  type: "POST",
 	  data: {
 	      user: window.fb_id,
-	      trick: selected_trick
+	      trick: current_vid
 	  },
 	  dataType: "html",
 	  success: function(data) {
+      console.log(data);
+      $('.add_or_remove').html(data);
+      
+      /*
       if (data == "landed") {
           //Show grey button if this trick hasn't been landed
-          console.log("so... " + window.fb_id + " has landed " + selected_trick + "!")
+          console.log("so... " + window.fb_id + " has landed " + current_vid + "!")
           $('.add_or_remove').html('<a href="#" class="btn-landed-true mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">playlist_add_check</i>Trick landed</a>');
       }else{
           //Show green button if this trick has been landed
-          console.log("so... " + window.fb_id + " has not landed " + selected_trick + "!")
+          console.log("so... " + window.fb_id + " has not landed " + current_vid + "!")
           $('.add_or_remove').html('<a href="#" class="btn-landed-false mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">playlist_add_check</i>Trick landed</a>');
           
-      };
+      };*/
 	  }
   });
             

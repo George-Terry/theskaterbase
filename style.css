@@ -37,6 +37,9 @@
 .btn-landed-true i{
   color: #00BCD4;
 }
+i:focus{
+  background-color: none;
+}
 
 .search {
   background-color: white;

@@ -13,19 +13,20 @@
 	}
 
 	$sql = "SELECT * FROM landed WHERE (trick, user) = ('$_POST[trick]', '$_POST[user]')";
-	
-	$result = mysqli_query($conn, $sql);
+	$landed = mysqli_query($conn, $sql);
 
-	if (mysqli_num_rows($result) > 0) {
-		echo "landed";
-		/*
-	    // output data of each row
-	    while($row = mysqli_fetch_assoc($result)) {
-	        echo "id: " . $row["id"]. " - User: " . $row["user"]. " " . $row["trick"]. "<br>";
-	    }
-	    */
+	$sql = "SELECT * FROM goal WHERE (trick, user) = ('$_POST[trick]', '$_POST[user]')";
+	$goal = mysqli_query($conn, $sql);
+
+	if (mysqli_num_rows($landed) > 0) {
+		echo '<a href="#" class="is-landed-btn btn-landed-true mdl-button mdl-js-button"><i class="material-icons">playlist_add_check</i>Landed</a>';
 	} else {
-	    echo "not_landed";
+	    echo '<a href="#" class="not-landed-btn btn-landed-false mdl-button mdl-js-button"><i class="material-icons">playlist_add_check</i>Landed</a>';
+	}
+	if (mysqli_num_rows($goal) > 0) {
+		echo '<a href="#" class="is-goal-btn btn-landed-true mdl-button mdl-js-button"><i class="material-icons">playlist_add</i>Goals</a>';
+	} else {
+	    echo '<a href="#" class="not-goal-btn btn-landed-false mdl-button mdl-js-button"><i class="material-icons">playlist_add</i>Goals</a>';
 	}
 
 	mysqli_close($conn);

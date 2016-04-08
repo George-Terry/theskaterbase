@@ -5,7 +5,7 @@ function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{
 $(function() {
     $('.result-container').on('click', '.trick-result', function(e) {
         console.log("yt function run");
-        window.selected_trick = $("p", this).text();
+        window.current_vid = $("p", this).text();
 
        e.preventDefault();
        // prepare the request
