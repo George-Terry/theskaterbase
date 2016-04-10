@@ -24,6 +24,9 @@
   border-radius: 3px;
 }
 
+.mdl-layout-title {
+  color: white;
+}
 /*Video color: #37474F;*/
 .mdl-button {
   color: #37474F;
@@ -89,4 +92,33 @@ i:focus{
 .profile_pic {
   height: 90px;
   border-radius: 90px;
+}
+
+/*Home page*/
+.demo-updates .mdl-card__title {
+    background-image: none;
+}
+
+.intro {
+    margin: 0 auto;
+    height: 450px;
+    background-image: url('images/sb_logo.png');
+    background-size: 250px;
+    background-position: 50% 40px;
+    background-repeat: no-repeat;
+}
+.play, .goal, .landed {
+  background-position: 50% -50px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+
+}
+.play {
+    background-image: url('images/play.png');
+}
+.goal {
+    background-image: url('images/goal.png');
+}
+.landed {
+    background-image: url('images/landed.png');
 }

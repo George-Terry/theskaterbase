@@ -72,44 +72,74 @@
           <div class="mdl-layout-spacer"></div>
         </nav>
       </div>
-      <main class=" video mdl-layout__content">
-        <div class="mdl-grid demo-content">
-          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="watch mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Watch</h2>
-              </div>
-              <div class="mdl-card__supporting-text">
-                Search a large database of professional trick tutorials.
-              </div>
+      <main class="mdl-layout__content">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Search</a>
-              </div>
-            </div>
-          </div>
-          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Learn</h2>
-              </div>
-              <div class="mdl-card__supporting-text">
-                Set some short, or long term, goals of the tricks you want to land.
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trick goals</a>
-              </div>
-            </div>
-          </div>
-          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Land</h2>
-              </div>
-              <div class="mdl-card__supporting-text">
-                Tick off the ones you've landed and earn awards pased on your progress.
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Landed tricks</a>
+                <div class="mdl-grid demo-content">
+                <!--Header image-->
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                  <div class="intro demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--8-col-desktop">
+                      <div class="watch mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text">The Skaterbase</h2>
+                      </div>
+                      <div class="mdl-card__supporting-text">
+                        This is the best place to manage your skateboarding tricks. This site can help you set and achieve your goals, to help you become a better skateboarder as fast as possible.
+                      </div>
+                  </div>
+                </div>
+                <!--Features-->
+                  <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+                    <div class="play demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                      <div class="watch mdl-card__title mdl-card--expand">
+                        
+                      </div>
+                      <div class="mdl-card__actions mdl-card--border">
+                      <div class="mdl-card__supporting-text">
+                      <h2 class="mdl-card__title-text">Watch</h2>
+                        Search a large database of professional trick tutorials.
+                      </div>
+                      <div class="mdl-card__actions mdl-card--border">
+                        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Search</a>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+                    <div class="goal demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                      <div class="mdl-card__title mdl-card--expand">
+
+                      </div>
+                      
+                      <div class="mdl-card__actions mdl-card--border">
+                      <div class="mdl-card__supporting-text">
+                        <h2 class="mdl-card__title-text">Learn</h2>
+                        Set some short, or long term, goals of the tricks you want to land.
+                      </div>
+                      <div class="mdl-card__actions mdl-card--border">
+                        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trick goals</a>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+                    <div class="landed demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                      <div class="mdl-card__title mdl-card--expand">
+                        
+                      </div>
+                      <div class="mdl-card__actions mdl-card--border">
+                      <div class="mdl-card__supporting-text">
+                      <h2 class="mdl-card__title-text">Land</h2>
+                        Tick off the ones you've landed and earn awards pased on your progress.
+                      </div>
+                      <div class="mdl-card__actions mdl-card--border">
+                        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Landed tricks</a>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
