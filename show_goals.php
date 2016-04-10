@@ -18,7 +18,7 @@
 	$user_landed = mysqli_query($conn, $user_landed);
 
 
-	echo "<h2>You currently have " . mysqli_num_rows($user_landed) . " Goals</h2>";
+	//echo "<h2>You currently have " . mysqli_num_rows($user_landed) . " Goals</h2>";
 
 	if (mysqli_num_rows($user_landed) > 0) {
 	    echo "<table id='goal-tricks'>

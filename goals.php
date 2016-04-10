@@ -161,7 +161,7 @@ s
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header ">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Search</span>
+          <span class="mdl-layout-title">Goals</span>
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer">
@@ -184,17 +184,23 @@ s
       <main class="mdl-layout__content">
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+
             <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+ 
               <div class="mdl-card__actions mdl-card--border">
-                <h1>Goals</h1>
-                <div id="goal-list"></div>
+                                     <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__actions mdl-card--border">
+                <div id="video">Select a trick from below to watch it...</div>
               </div>
             </div>
-            <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
-                <div id="video">Video here...</div>
+                <div id="goal-list">Loading your goals...</div>
               </div>
             </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </main>
@@ -275,7 +281,7 @@ s
 		          var results = response.result;
 		          $("#video").html("");
 		          $.each(results.items, function(index, item) {
-		            $.get("video.html", function(data) {
+		            $.get("video-preview.html", function(data) {
 		                $("#video").append(tplawesome(data, [{"videoid":item.id.videoId}]));
 		            });
 		          });
@@ -291,7 +297,9 @@ s
 		    });
 		}
 
-    
+      $('#video').on('click', '.exit', function() {
+        $( "#video" ).html("Select a trick from below to watch it...");
+      });
 
     </script>
   </body>

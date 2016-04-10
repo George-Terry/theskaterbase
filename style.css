@@ -94,6 +94,14 @@ i:focus{
   border-radius: 90px;
 }
 
+/*Video*/
+.exit {
+  float: right;
+}
+.exit:hover i {
+  color: #FF8F00;
+}
+
 /*Home page*/
 .demo-updates .mdl-card__title {
     background-image: none;

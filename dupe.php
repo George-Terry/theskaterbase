@@ -29,5 +29,7 @@
 	    echo '<a href="#" class="not-goal-btn btn-landed-false mdl-button mdl-js-button"><i class="material-icons">playlist_add</i>Goals</a>';
 	}
 
+	echo '<a href="#" class="exit btn-landed-false mdl-button mdl-js-button"><i class="material-icons">clear</i>Exit</a>';
+
 	mysqli_close($conn);
  ?>
