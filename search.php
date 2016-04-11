@@ -172,7 +172,7 @@ s
           <a href="stats.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">timeline</i>Stats</a>
           <div class="mdl-layout-spacer"></div>
         </nav>
-      </div>
+      </div><!-- 
       <main class="mdl-layout__content">
         <div class="mdl-grid demo-content">
           <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
@@ -188,10 +188,41 @@ s
             </div>
             <div id="prev-result" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
             </div>
-            <!-- Video -->
+            Video 
             <div class="video-container mdl-shadow--2dp mdl-card--expand">
               <div id="video"></div>
               <div id="notification"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+-->
+      <main class="mdl-layout__content">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__actions mdl-card--border">
+                
+                  <div class="search mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+                    <div class="mdl-card__actions mdl-card--border">
+                      <form action="search.php" method="post">
+                        <i class="material-icons">search</i>
+                        <input id="search" type="text" name="search" placeholder="Search for tricks..." autocomplete="off" onkeydown="searchq();"></input>
+                      </form>
+                    </div>
+                  </div>
+                  <div id="output" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+            </div>
+            <div id="prev-result" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+            </div>
+            <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+            <div class="video-container mdl-card__actions mdl-card--border">
+              <div id="video"></div>
+              <div id="notification"></div>
+            </div>
+            </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -208,27 +239,27 @@ s
         var search_text = $("input[name='search']").val();
 
         $.post("live-search.php", {sarchVal: search_text}, function(output){
-          $("#output").html(output);
+          $("#output").html(output).show(500);
         });
       }
 
       $('.video-container').hide();
       //Shows the video container and hides the result container after a trick has been clicked on
       $('.result-container').on('click', '.trick-result', function() {
-        $('.result-container').hide();
-        $('.video-container').show();
+        $('.result-container').hide(500);
+        $('.video-container').show(500);
       });
 
       $('#search').focus(function(){
         $( "#prev-result" ).html( '<div class="prev-result result mdl-shadow--2dp mdl-card__actions mdl-card--border"><i class="material-icons">backspace</i><p>Go back to '
           + current_vid+
               '...</p></div>' );
-        $('.result-container').show();
-        $('.video-container').hide();
+        $('.result-container').show(500);
+        $('.video-container').hide(500);
       });
       $('.result-container').on('click', '.prev-result', function() {
-        $('.result-container').hide();
-        $('.video-container').show();
+        $('.result-container').hide(500);
+        $('.video-container').show(500);
       });
 
 
@@ -323,6 +354,11 @@ s
             },
         });
     
+      });
+
+
+      $('#video').on('click', '.exit', function() {
+        $( ".video-container" ).hide(500);
       });
 /*
       $('.video-container').on('click', '.btn-landed-false', function() {
