@@ -36,11 +36,7 @@
 	if (mysqli_num_rows($tricklist) > 0) {
 
 		// The start of the table and headers
-	    echo "<h3>Landed</h3><table class='landed-tricks'>
-				<th>Remove</th>
-				<th>Watch</th>
-				<th>Landed</th>
-				<th>Trick</th>";
+	    echo "<table class='landed-tricks'>";
 	    
 	    // Generaates html for each landed trick
 		while($row = mysqli_fetch_assoc($landed)) {

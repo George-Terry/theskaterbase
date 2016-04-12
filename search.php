@@ -27,42 +27,18 @@ s
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="description" content="The best way to manage skateboarding tricks.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <title>The Skaterbase</title>
-
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
 
     <link rel="shortcut icon" href="images/favicon.png">
 
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.amber-cyan.min.css" />
     <link rel="stylesheet" href="mdl.css">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript">
-
-
-
-    </script>
   </head>
   <body>
     <script>
@@ -165,38 +141,11 @@ s
         </div>
         </header>
         <nav class="demo-navigation mdl-navigation">
-          <a href="index.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">home</i>Home</a>
-          <a href="search.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">search</i>Search</a>
-          <a href="goals.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add</i>Goals</a>
-          <a href="landed.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">playlist_add_check</i>Landed</a>
-          <a href="stats.php" class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">timeline</i>Stats</a>
-          <div class="mdl-layout-spacer"></div>
+          <a href="index.php" class="mdl-navigation__link"><i class="material-icons" role="presentation">home</i>Home</a>
+          <a href="search.php" class="mdl-navigation__link"><i class="material-icons" role="presentation">search</i>Search</a>
+          <a href="tricklist.php" class="mdl-navigation__link"><i class="material-icons" role="presentation">assignment</i>Trick List</a>
         </nav>
-      </div><!-- 
-      <main class="mdl-layout__content">
-        <div class="mdl-grid demo-content">
-          <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
-            <div class="search mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__actions mdl-card--border">
-                <form action="search.php" method="post">
-                  <i class="material-icons">search</i>
-                  <input id="search" type="text" name="search" placeholder="Search for tricks..." autocomplete="off" onkeydown="searchq();"></input>
-                </form>
-              </div>
-            </div>
-            <div id="output" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-            </div>
-            <div id="prev-result" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-            </div>
-            Video 
-            <div class="video-container mdl-shadow--2dp mdl-card--expand">
-              <div id="video"></div>
-              <div id="notification"></div>
-            </div>
-          </div>
-        </div>
-      </main>
--->
+      </div>
       <main class="mdl-layout__content">
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
