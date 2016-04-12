@@ -263,7 +263,7 @@ s
 		function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 
 		$(function() {
-			$('#goal-list').on('click', '.watch-trick', function(e) {
+			$('#goal-list').on('click', '.watch-icon', function(e) {
 		        console.log("yt function run");
 		        selected_trick = $(this).siblings('.trick-name').text();
 		        console.log (selected_trick)

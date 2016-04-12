@@ -21,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Material Design Lite</title>
+    <title>The Skaterbase</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -100,9 +100,6 @@
                       <h2 class="mdl-card__title-text">Watch</h2>
                         Search a large database of professional trick tutorials.
                       </div>
-                      <div class="mdl-card__actions mdl-card--border">
-                        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Search</a>
-                      </div>
                       </div>
                     </div>
                   </div>
@@ -117,9 +114,6 @@
                         <h2 class="mdl-card__title-text">Learn</h2>
                         Set some short, or long term, goals of the tricks you want to land.
                       </div>
-                      <div class="mdl-card__actions mdl-card--border">
-                        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trick goals</a>
-                      </div>
                       </div>
                     </div>
                   </div>
@@ -131,10 +125,7 @@
                       <div class="mdl-card__actions mdl-card--border">
                       <div class="mdl-card__supporting-text">
                       <h2 class="mdl-card__title-text">Land</h2>
-                        Tick off the ones you've landed and earn awards pased on your progress.
-                      </div>
-                      <div class="mdl-card__actions mdl-card--border">
-                        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Landed tricks</a>
+                        Tick off the ones you've landed and earn awards based on your progress.
                       </div>
                       </div>
                     </div>

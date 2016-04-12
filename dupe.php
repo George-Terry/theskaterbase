@@ -15,7 +15,7 @@
 	$sql = "SELECT * FROM landed WHERE (trick, user) = ('$_POST[trick]', '$_POST[user]')";
 	$landed = mysqli_query($conn, $sql);
 
-	$sql = "SELECT * FROM goal WHERE (trick, user) = ('$_POST[trick]', '$_POST[user]')";
+	$sql = "SELECT * FROM goals WHERE (trick, user) = ('$_POST[trick]', '$_POST[user]')";
 	$goal = mysqli_query($conn, $sql);
 
 	if (mysqli_num_rows($landed) > 0) {

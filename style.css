@@ -130,3 +130,26 @@ i:focus{
 .landed {
     background-image: url('images/landed.png');
 }
+
+/*General*/
+i:hover {
+  cursor: pointer;
+}
+
+/*Trick list*/
+.play-icon:hover {
+  color: #00BCD4;
+}
+.goal-item > .goal-icon > i {
+  color: #00BCD4;
+}
+/**/
+.landed-item > .goal-icon i,
+.landed-item > .landed-icon i,
+.landed-item > .trick-name {
+  color: #00BCD4;
+}
+
+.landed-item .trick-name {
+  text-decoration: line-through;
+}
