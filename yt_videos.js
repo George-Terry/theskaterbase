@@ -6,6 +6,7 @@ $(function() {
     $('.result-container').on('click', '.trick-result', function(e) {
         console.log("yt function run");
         window.current_vid = $("p", this).text();
+        console.log (current_vid);
 
        e.preventDefault();
        // prepare the request

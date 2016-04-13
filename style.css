@@ -142,8 +142,6 @@ i:focus{
   z-index: 999;
 }
 .loading-text {
-  margin-top: 500px;
-  height: 500px;
   width: 200px;
   margin: 0 auto;
 }

@@ -150,7 +150,7 @@ s
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header ">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Search</span>
+          <span class="mdl-layout-title">Home</span>
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer">
@@ -241,12 +241,12 @@ s
               <div class="mdl-card__actions mdl-card--border">
                                      <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
-                <div id="video">Select a trick from below to watch it...</div>
+                <div id="video-tricklist">Select a trick from below to watch it.</div>
               </div>
             </div>
               <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__actions mdl-card--border">
-                <div id="goal-list">Loading your goals...</div>
+                <div id="goal-list">You need to add some goals from the search page...</div>
               </div>
             </div>
               </div>
@@ -293,123 +293,27 @@ s
     
     <script type="text/javascript">
 
-      $(document).ready(function() {
-         
-      });
 
       $("#tricklist-page").hide();
         $("#search-page").hide();
       // Switch between pages
       $('.home-menu').click( function() {
+        $(".mdl-layout-title").text("Home")
         $("#home-page").show();
         $("#tricklist-page").hide();
         $("#search-page").hide();
       });
       $('.search-menu').click( function() {
+        $(".mdl-layout-title").text("Search")
         $("#search-page").show();
         $("#tricklist-page").hide();
         $("#home-page").hide();
       });
       $('.tricklist-menu').click( function() {
+        $(".mdl-layout-title").text("Trick List")
         $("#tricklist-page").show();
         $("#home-page").hide();
         $("#search-page").hide();
-      });
-
-
-/*
-:::::::::::::::::::::::::::::::::::::::::::::::::
-Start of tricklist JavaScript
-:::::::::::::::::::::::::::::::::::::::::::::::::
-*/
-      $('#goal-list').on('click', '.remove-trick', function() {
-
-        console.log($(this).siblings('.trick-name').text());
-
-        $(this).parent().hide();
-
-        selected_trick = $(this).siblings('.trick-name').text();
-
-        $(".btn-landed-true").attr('class', ".btn-landed-false");
-
-        $.ajax({
-            url: "remove_goal.php",
-            type: "POST",
-            data: {
-                user: window.fb_id,
-                trick: selected_trick
-            },
-            dataType: "html",
-            success: function(data) {
-                $('#notification').show().html(data);
-            },
-        });
-    
-      });
-
-      $('#goal-list').on('click', '.landed-trick', function() {
-
-        $(this).parent().css({"text-decoration": "line-through"});
-
-        selected_trick = $(this).siblings('.trick-name').text();
-
-        $(".btn-landed-true").attr('class', ".btn-landed-false");
-
-        $.ajax({
-            url: "lists.php",
-            type: "POST",
-            data: {
-                user: window.fb_id,
-                trick: selected_trick
-            },
-            dataType: "html",
-            success: function(data) {
-                console.log(data);
-            },
-        });
-    
-      });
-
-		//replace {{keys}} from an HTML template with formatted JSON data (https://github.com/FriesFlorian/tplawesome)
-		function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
-
-		$(function() {
-			$('#goal-list').on('click', '.watch-icon', function(e) {
-		        console.log("yt function run");
-		        selected_trick = $(this).siblings('.trick-name').text();
-		        console.log (selected_trick)
-		       e.preventDefault();
-		       // prepare the request
-		       var request = gapi.client.youtube.search.list({
-		            part: "snippet",
-		            type: "video",
-		            channelId: "UCX9_Ks1MXuwXCmtt0fOFsxA",
-		            q: "how-to '" + encodeURIComponent(selected_trick).replace(/%20/g, "'"),
-		            maxResults: 1
-		       });
-		       // execute the request
-		       request.execute(function(response) {
-		          var results = response.result;
-		          $("#video").html("");
-		          $.each(results.items, function(index, item) {
-		            $.get("video-preview.html", function(data) {
-		                $("#video").append(tplawesome(data, [{"videoid":item.id.videoId}]));
-		            });
-		          });
-		       });
-		    });
-		});
-
-		function init() {
-		    gapi.client.setApiKey("AIzaSyCdbNzu-sah57tzrW3LcFmmHYw2kk1Jksw");
-		    gapi.client.load("youtube", "v3", function() {
-		      console.log("YT API initialised...")
-		        // yt api is ready
-		    });
-		}
-
-      $('#video').on('click', '.exit', function() {
-        $( "#video" ).html("Select a trick from below to watch it...");
       });
 
 
@@ -420,6 +324,9 @@ Start of tricklist JavaScript
 Start of search JavaScript
 :::::::::::::::::::::::::::::::::::::::::::::::::
 */
+
+
+
       function searchq() {
         var search_text = $("input[name='search']").val();
 
@@ -435,17 +342,18 @@ Start of search JavaScript
         $('.video-container').show(500);
       });
 
-      $('#search').focus(function(){
-        $( "#prev-result" ).html( '<div class="prev-result result mdl-shadow--2dp mdl-card__actions mdl-card--border"><i class="material-icons">backspace</i><p>Go back to '
-          + current_vid+
-              '...</p></div>' );
-        $('.result-container').show(500);
-        $('.video-container').hide(500);
-      });
-      $('.result-container').on('click', '.prev-result', function() {
-        $('.result-container').hide(500);
-        $('.video-container').show(500);
-      });
+
+        $('#search').focus(function(){
+          $( "#prev-result" ).html( '<div class="prev-result result mdl-shadow--2dp mdl-card__actions mdl-card--border"><i class="material-icons">backspace</i><p>Go back to '
+            + current_vid+
+                '...</p></div>' );
+          $('.result-container').show(500);
+          $('.video-container').hide(500);
+        });
+        $('.result-container').on('click', '.prev-result', function() {
+          $('.result-container').hide(500);
+          $('.video-container').show(500);
+        });
 
 
       //Add the current trick to the "landed" table and change the button from:
@@ -545,6 +453,107 @@ Start of search JavaScript
       $('#video').on('click', '.exit', function() {
         $( ".video-container" ).hide(500);
       });
+
+
+/*
+:::::::::::::::::::::::::::::::::::::::::::::::::
+Start of tricklist JavaScript
+:::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+      $('#goal-list').on('click', '.remove-trick', function() {
+
+        console.log($(this).siblings('.trick-name').text());
+
+        $(this).parent().hide();
+
+        selected_trick = $(this).siblings('.trick-name').text();
+
+        $(".btn-landed-true").attr('class', ".btn-landed-false");
+
+        $.ajax({
+            url: "remove_goal.php",
+            type: "POST",
+            data: {
+                user: window.fb_id,
+                trick: selected_trick
+            },
+            dataType: "html",
+            success: function(data) {
+                $('#notification').show().html(data);
+            },
+        });
+    
+      });
+
+      $('#goal-list').on('click', '.landed-trick', function() {
+
+        $(this).parent().css({"text-decoration": "line-through"});
+
+        selected_trick = $(this).siblings('.trick-name').text();
+
+        $(".btn-landed-true").attr('class', ".btn-landed-false");
+
+        $.ajax({
+            url: "lists.php",
+            type: "POST",
+            data: {
+                user: window.fb_id,
+                trick: selected_trick
+            },
+            dataType: "html",
+            success: function(data) {
+                console.log(data);
+            },
+        });
+    
+      });
+
+		//replace {{keys}} from an HTML template with formatted JSON data (https://github.com/FriesFlorian/tplawesome)
+		function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
+
+		$(function() {
+			$('#goal-list').on('click', '.watch-icon', function(e) {
+		        console.log("yt function run");
+		        selected_trick = $(this).siblings('.trick-name').text();
+		        console.log (selected_trick)
+		       e.preventDefault();
+		       // prepare the request
+		       var request = gapi.client.youtube.search.list({
+		            part: "snippet",
+		            type: "video",
+		            channelId: "UCX9_Ks1MXuwXCmtt0fOFsxA",
+		            q: "how-to '" + encodeURIComponent(selected_trick).replace(/%20/g, "'"),
+		            maxResults: 1
+		       });
+		       // execute the request
+		       request.execute(function(response) {
+		          var results = response.result;
+		          $("#video-tricklist").html("");
+		          $.each(results.items, function(index, item) {
+		            $.get("video-preview.html", function(data) {
+		                $("#video-tricklist").append(tplawesome(data, [{"videoid":item.id.videoId}]));
+		            });
+		          });
+		       });
+		    });
+		});
+
+		function init() {
+		    gapi.client.setApiKey("AIzaSyCdbNzu-sah57tzrW3LcFmmHYw2kk1Jksw");
+		    gapi.client.load("youtube", "v3", function() {
+		      console.log("YT API initialised...")
+		        // yt api is ready
+		    });
+		}
+
+      $('#video').on('click', '.exit', function() {
+        $( "#video" ).html("Select a trick from below to watch it...");
+      });
+
+
+
+
+
 
     </script>
   </body>
