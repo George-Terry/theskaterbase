@@ -230,15 +230,15 @@ http://www.impressivewebs.com/loading-different-jquery-version-ie6-8/-->
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
 
-          <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+          <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
 
             <div class="mdl-card__actions mdl-card--border">
-              <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                 <div class="mdl-card__actions mdl-card--border">
                   <div id="video-tricklist">Select a trick from below to watch it.</div>
                 </div>
               </div>
-              <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                 <div class="mdl-card__actions mdl-card--border">
                   <div id="goal-list">You need to add some goals from the search page...</div>
                 </div>
@@ -251,10 +251,10 @@ http://www.impressivewebs.com/loading-different-jquery-version-ie6-8/-->
     <main id="search-page" class="mdl-layout__content">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
-          <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+          <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
             <div class="mdl-card__actions mdl-card--border">
 
-              <div class="search mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="search mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                 <div class="mdl-card__actions mdl-card--border">
                   <form action="search.php" method="post">
                     <i class="material-icons">search</i>
@@ -262,11 +262,11 @@ http://www.impressivewebs.com/loading-different-jquery-version-ie6-8/-->
                   </form>
                 </div>
               </div>
-              <div id="output" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div id="output" class="result-container mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
               </div>
-              <div id="prev-result" class="result-container mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div id="prev-result" class="result-container mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
               </div>
-              <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                 <div class="video-container mdl-card__actions mdl-card--border">
                   <div id="video"></div>
                   <div id="notification"></div>

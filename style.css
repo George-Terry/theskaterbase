@@ -101,6 +101,35 @@ i:focus{
 .exit:hover i {
   color: #FF8F00;
 }
+    iframe {
+      height: 650px;
+    }
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+    iframe {
+      height: 500px;
+    }
+}
+@media screen 
+  and (min-device-width: 700px) 
+  and (max-device-width: 1200px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+    iframe {
+      height: 400px;
+    }
+}
+
+@media screen 
+  and (min-device-width: 480px) 
+  and (max-device-width: 700px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+    iframe {
+      height: 300px;
+    }
+}
+
 
 /*Home page*/
 .demo-updates .mdl-card__title {
@@ -145,8 +174,10 @@ i:focus{
   width: 200px;
   margin: 0 auto;
 }
+
 /* Spin animation credit:;
 http://stackoverflow.com/questions/14859322/css3-spin-animation*/
+
 .loading-image {
     width: 100px;
     height: 100px;
@@ -168,6 +199,8 @@ http://stackoverflow.com/questions/14859322/css3-spin-animation*/
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
+
+
 @-ms-keyframes spin {
     from { -ms-transform: rotate(0deg); }
     to { -ms-transform: rotate(360deg); }
@@ -180,6 +213,7 @@ http://stackoverflow.com/questions/14859322/css3-spin-animation*/
     from { -webkit-transform: rotate(0deg); }
     to { -webkit-transform: rotate(360deg); }
 }
+
 @keyframes spin {
     from {
         transform:rotate(0deg);

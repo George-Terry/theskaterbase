@@ -43,8 +43,8 @@
 		while($row = mysqli_fetch_assoc($landed)) {
 	        echo "<tr class='landed-item' id='goal-id-" . $row["id"] . "'>
 				    <td title='Watch " . $row["trick"] . " tutorial video' class='watch-icon'><i class='material-icons'>play_circle_outline</i></td>
-				    <td title='Remove " . $row["trick"] . " from your goals' class='goal-icon'><i class='material-icons'>playlist_add</i></td>
-				    <td title='Remove " . $row["trick"] . " from your landed tricks' class='landed-icon'><i class='material-icons'>playlist_add_check</i></td>
+				    <td title='Remove " . $row["trick"] . " from your goals' class='is-goal-btn goal-icon'><i class='material-icons'>playlist_add</i></td>
+				    <td title='Remove " . $row["trick"] . " from your landed tricks' class='is-goal-btn landed-icon'><i class='material-icons'>playlist_add_check</i></td>
 				    <td class='trick-name'>" . $row["trick"] . "</td>
 				  </tr>";
 		}
